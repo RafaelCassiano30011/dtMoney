@@ -43,21 +43,39 @@ export const Summary = () => {
           <p>Entradas</p>
           <img src={incomeImg} alt="Entradas" />
         </header>
-        <strong>{`R$${valuePositive}`}</strong>
+        <strong>
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(valuePositive)}
+        </strong>
       </div>
       <div>
         <header>
           <p>Saidas</p>
           <img src={outecomeImg} alt="Saidas" />
         </header>
-        <strong>{`- R$${valueNegative}`}</strong>
+        <strong>
+          -
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(valueNegative)}
+        </strong>
       </div>
       <div>
         <header>
           <p>Total</p>
           <img src={totalImg} alt="Total" />
         </header>
-        <strong>R${valueTotal < 0 ? 0 : valueTotal}</strong>
+        <strong>
+          {valueTotal < 0
+            ? 0
+            : new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(valueTotal)}
+        </strong>
       </div>
     </Container>
   );
